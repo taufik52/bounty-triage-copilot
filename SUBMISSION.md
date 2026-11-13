@@ -5,7 +5,7 @@
 > (20 Dec 2026, 9:00 PM PST / 21 Dec 05:00 UTC — verified 12 Nov 2026).
 > Hackathon page: https://arbiter-hacks-v1.devpost.com
 > Prize pool: $7,800 (5 cash prizes). Eligibility: students only, 13+.
-> Tests re-verified fresh 12 Nov 2026: unit 13/13, E2E 9/9.
+> Tests re-verified fresh 13 Nov 2026 ~18:47 WIB: unit 13/13, E2E 9/9.
 
 ## Project title
 

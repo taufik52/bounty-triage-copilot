@@ -4,6 +4,18 @@ Test date: 12 November 2026 (WIB). All tests run on this VM.
 Reproduce with: `python3 -m unittest test_triage test_llm_parse -v`
 and `bash test_e2e.sh`.
 
+**Re-verified fresh 13 Nov 2026 ~18:47 WIB: unit 13/13, E2E 9/9,
+strong draft 93/100 Grade A, weak draft 7/100 Grade F, rules scoring
+latency 0.001244 s. Ollama was DOWN at the start of this run (no
+process, port 11434 refused) — restarted with
+`OLLAMA_MODELS=/run/hatch/resume/ollama-models ollama serve`, model
+`qwen2.5:3b` present; live `/api/health` → `ollama_available: true`,
+"model qwen2.5:3b available". Git repo initialized locally and
+committed (`cc5351f`, 16 files, branch main, no remote yet). `gh` CLI
+is already authenticated as taufik52 with `repo` scope, so remote
+creation + push is a one-liner once Cipoz gives the go-ahead (see
+CIPOZ-STEPS.md).**
+
 **Re-verified fresh 12 Nov 2026 ~12:30 WIB (resume run): unit 13/13,
 E2E 9/9, strong draft 93/100 Grade A, weak draft 7/100 Grade F,
 rules scoring latency 0.0019 s. Live server check: `/api/health`

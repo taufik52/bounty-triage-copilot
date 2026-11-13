@@ -1,9 +1,18 @@
 # CIPOZ-STEPS.md — Langkah submit Arbiter Hacks V1 (Bounty Triage Copilot)
 
 > **Status proyek: SIAP.** Unit test 13/13 dan E2E 9/9 sudah diverifikasi
-> segar 12 Nov 2026 ~12:30 WIB. Yang tersisa HANYA langkah di bawah ini,
-> semuanya butuh akun/login Cipoz sendiri (GitHub, YouTube, Devpost) —
+> segar 13 Nov 2026 ~18:47 WIB (sebelumnya 12 Nov ~12:30 WIB). Repo git
+> lokal sudah dibuat + commit `cc5351f` (16 file, branch main, belum ada
+> remote). Yang tersisa HANYA langkah di bawah ini, semuanya butuh
+> akun/login Cipoz sendiri (GitHub, YouTube, Devpost) —
 > agen tidak bisa melakukannya.
+>
+> **Jalan pintas baru (ditemukan 13 Nov ~18:47 WIB):** `gh` CLI di VM
+> ini SUDAH login sebagai `taufik52` dengan scope `repo`, jadi Langkah 1
+> + 2 bisa diganti satu perintah (TANPA browser/PAT) — TAPI tetap butuh
+> persetujuan Cipoz dulu karena ini membuat repo publik atas nama
+> akunnya:
+> `cd ~/workspace/arbiter-hacks && gh repo create bounty-triage-copilot --public --source=. --push`
 >
 > **Tenggat: 21 Desember 2026, 12:00 WIB** (20 Des 2026 21:00 PST /
 > 21 Des 05:00 UTC). Penjurian 20–30 Des, pemenang diumumkan 31 Des 2026.
@@ -131,7 +140,19 @@ Ikuti naskah lengkap di `DEMO-SCRIPT.md`. Ringkasnya:
   naskah demo sudah menuliskan ini. Skor instan 93/100 dan 7/100 tidak
   terpengaruh sama sekali.
 
-## Bukti kesiapan (12 Nov 2026 ~12:30 WIB)
+## Bukti kesiapan (13 Nov 2026 ~18:47 WIB — verifikasi ulang segar)
+
+- Unit test: **13/13 lolos** (`python3 -m unittest test_triage test_llm_parse -v`)
+- E2E: **9/9 lolos** (`bash test_e2e.sh`), latensi skor 0,001244 dtk
+- Draf kuat: **93/100 Grade A**, draf lemah: **7/100 Grade F**
+- Server live: `/api/health` → `ollama_available: true`, model
+  `qwen2.5:3b` tersedia (Ollama sempat mati, dihidupkan ulang dengan
+  `OLLAMA_MODELS=/run/hatch/resume/ollama-models ollama serve`)
+- Repo git lokal: commit `cc5351f`, 16 file, branch main, belum ada remote
+- `gh` CLI sudah login sebagai `taufik52` (scope `repo`) — repo publik +
+  push tinggal satu perintah begitu Cipoz memberi ok
+
+Bukti sebelumnya (12 Nov 2026 ~12:30 WIB):
 
 - Unit test: **13/13 lolos** (`python3 -m unittest test_triage test_llm_parse -v`)
 - E2E: **9/9 lolos** (`bash test_e2e.sh`), latensi skor 0,0019 dtk
