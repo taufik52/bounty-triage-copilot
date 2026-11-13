@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bounty Triage Copilot</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>🛡️ Bounty Triage Copilot</h1>
+  <p class="tagline">Score your bug-bounty draft against a triage rubric — before a human triager does.
+  Rules-based scoring is instant and local; an optional local LLM review (Ollama, qwen2.5:3b) adds a second opinion.
+  Nothing leaves your machine.</p>
+  <p id="health" class="health">Checking local services…</p>
+</header>
+
+<main>
+  <section class="form">
+    <label for="program">Program</label>
+    <input id="program" type="text" value="Example DeFi Vault" maxlength="120">
+
+    <label for="title">Report title</label>
+    <input id="title" type="text" placeholder="e.g. Reentrancy in Vault.withdraw allows draining user funds" maxlength="200">
+
+    <label for="draft">Draft report (Markdown supported)</label>
+    <textarea id="draft" rows="16" placeholder="Paste your draft report here…"></textarea>
+
+    <div class="row">
+      <button id="scoreBtn" type="button">Score my draft</button>
+      <button id="llmBtn" type="button" class="secondary" disabled>Ask local LLM (slow, optional)</button>
+      <span class="samples">Load example:
+        <button type="button" class="link" data-sample="strong">strong draft</button> ·
+        <button type="button" class="link" data-sample="weak">weak draft</button>
+      </span>
+    </div>
+    <p id="status" class="status"></p>
+  </section>
+
+  <section id="results" class="results hidden">
+    <h2>Result — <span id="grade"></span> <span id="total"></span>/100</h2>
+    <p id="verdict" class="verdict"></p>
+
+    <h3>Rubric breakdown</h3>
+    <div id="dimensions"></div>
+
+    <h3>Severity check</h3>
+    <p id="severity"></p>
+
+    <div id="dupWrap" class="hidden">
+      <h3>Duplication screen (heuristic)</h3>
+      <ul id="duplicates"></ul>
+      <p class="fineprint">Heuristic match against a small list of common public issue patterns — not a duplicate database. Always check the program's known-issues list.</p>
+    </div>
+
+    <h3>Suggestions</h3>
+    <ul id="suggestions"></ul>
+
+    <div id="llmWrap" class="hidden">
+      <h3>Local LLM review (Ollama qwen2.5:3b)</h3>
+      <p id="llmSummary"></p>
+      <div id="llmDetail"></div>
+      <p id="llmMeta" class="fineprint"></p>
+    </div>
+    <p id="llmNote" class="fineprint hidden"></p>
+  </section>
+</main>
+
+<footer>
+  <p>Bounty Triage Copilot — Arbiter Hacks V1 (General Track). Runs fully locally: Python stdlib server + Ollama on localhost. No accounts, no uploads, no data stored.</p>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
